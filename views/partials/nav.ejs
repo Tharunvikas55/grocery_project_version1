@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+      integrity="sha384-TcCCX9apD/1NzVpPxuN/ytAzV7CvM8z1dO62La/OoQ2qxAbILPb9roFtAtfOYztE"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merienda+One"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <style>
+      .ajaxbg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        z-index: index 2;
+        display: none;
+      }
+      .ajaxinner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      #load {
+        width: 50px;
+        height: 50px;
+      }
+      body {
+        background: #eeeeee;
+      }
+      .form-inline {
+        display: inline-block;
+      }
+      .navbar-header.col {
+        padding: 0 !important;
+      }
+      .navbar {
+        background: #fff;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-bottom: 1px solid #d6d6d6;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+      }
+      .nav-link img {
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        margin: -8px 0;
+        float: left;
+        margin-right: 10px;
+      }
+      .navbar .navbar-brand {
+        color: #555;
+        padding-left: 0;
+        padding-right: 50px;
+        font-family: "Merienda One", sans-serif;
+      }
+      .navbar .navbar-brand i {
+        font-size: 20px;
+        margin-right: 5px;
+      }
+      .search-box {
+        position: relative;
+      }
+      .search-box input {
+        box-shadow: none;
+        padding-right: 35px;
+        border-radius: 3px !important;
+      }
+      .search-box .input-group-addon {
+        min-width: 35px;
+        border: none;
+        background: transparent;
+        position: absolute;
+        right: 0;
+        z-index: 9;
+        padding: 7px;
+        height: 100%;
+      }
+      .search-box i {
+        color: #a0a5b1;
+        font-size: 19px;
+      }
+      .navbar .nav-item i {
+        font-size: 18px;
+      }
+      .navbar .dropdown-item i {
+        font-size: 16px;
+        min-width: 22px;
+      }
+      .navbar .nav-item.open > a {
+        background: none !important;
+      }
+      .navbar .dropdown-menu {
+        border-radius: 1px;
+        border-color: #e5e5e5;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .navbar .dropdown-menu a {
+        color: #777;
+        padding: 8px 20px;
+        line-height: normal;
+      }
+      .navbar .dropdown-menu a:hover,
+      .navbar .dropdown-menu a:active {
+        color: #333;
+      }
+      .navbar .dropdown-item .material-icons {
+        font-size: 21px;
+        line-height: 16px;
+        vertical-align: middle;
+        margin-top: -2px;
+      }
+      .navbar .badge {
+        color: #fff;
+        background: #f44336;
+        font-size: 11px;
+        border-radius: 20px;
+        position: absolute;
+        min-width: 10px;
+        padding: 4px 6px 0;
+        min-height: 18px;
+        top: 5px;
+      }
+      .navbar a.notifications,
+      .navbar a.messages {
+        position: relative;
+        margin-right: 10px;
+      }
+      .navbar a.messages {
+        margin-right: 20px;
+      }
+      .navbar a.notifications .badge {
+        margin-left: -8px;
+      }
+      .navbar a.messages .badge {
+        margin-left: -4px;
+      }
+      .navbar .active a,
+      .navbar .active a:hover,
+      .navbar .active a:focus {
+        background: transparent !important;
+      }
+      @media (min-width: 1200px) {
+        .form-inline .input-group {
+          width: 300px;
+          margin-left: 30px;
+        }
+      }
+      @media (max-width: 1199px) {
+        .form-inline {
+          display: block;
+          margin-bottom: 10px;
+        }
+        .input-group {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ajaxbg">
+      <div class="ajaxinner">
+        <h3>You are now being redirected to paypal...</h3>
+        <img
+          id="load"
+          src="https://media.tenor.com/YtAOA9y7VG0AAAAC/loading.gif"
+          alt=""
+        />
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+      <a href="#" class="navbar-brand"
+        ><i class="fa fa-cube"></i>Khandan <b>stores</b>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collection of nav links, forms, and other content for toggling -->
+      <div
+        id="navbarCollapse"
+        class="collapse navbar-collapse justify-content-start"
+      >
+        <div class="navbar-nav">
+          <a href="/" class="nav-item nav-link active">Home</a>
+          <!-- <a href="/admin/products" class="nav-item nav-link">Products</a> -->
+          <div class="nav-item dropdown">
+            <a
+              href="/index"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >All Catogory</a
+            >
+            <div class="dropdown-menu">
+              <% catogories.forEach(function(c){%>
+              <a href="/products/<%=c.slug%>" class="dropdown-item"
+                ><%=c.title%></a
+              >
+              <%});%>
+            </div>
+          </div>
+          <!-- <a href="#" class="nav-item nav-link">Blog</a> -->
+          <a href="/contact" class="nav-item nav-link">Contact</a>
+        </div>
+        <form class="navbar-form form-inline" action="/search" method="get">
+          <div class="input-group search-box">
+            <input
+              type="text"
+              id="search"
+              class="form-control"
+              placeholder="Search by Name"
+            />
+            <span class="input-group-addon"
+              ><i class="material-icons">&#xE8B6;</i></span
+            >
+          </div>
+        </form>
+
+        <!--  -->
+
+        <div class="navbar-nav ml-auto">
+          <!-- <a href="/register" class="nav-item nav-link"> Sign Up</a> -->
+          <!-- <div class="nav-item dropdown">
+            <a
+              href=""
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              ><i class="bi-box-arrow-in-left"></i>Login</a
+            >
+
+            <form class="dropdown-menu w-100 p-1">
+              <div class="form-group">
+                <label for="exampleDropdownFormEmail2">Phone no</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleDropdownFormEmail2"
+                  placeholder="mobile"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleDropdownFormPassword2">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleDropdownFormPassword2"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="dropdownCheck2"
+                />
+                <label class="form-check-label" for="dropdownCheck2">
+                  Remember me
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Sign in</button>
+
+              <label class="form-label" for="dropdownCheck2">
+                New customer? <a href="/register">register</a>
+              </label>
+            </form>
+          </div> -->
+
+          <a href="/logout" class="nav-item nav-link"> Logout</a>
+          <%if(user.isAdmin){%>
+          <a href="/admin" class="btn">admin</a>
+          <%} else{%>
+          <!-- <a href="/cart/checkout" class="nav-item nav-link"
+            ><i class="bi-cart3"></i>My Wishlist( <% if(typeof
+            cart!=="undefined"){%> <%=cart.length%> <%} else{%> 0 <%}%>)
+          </a> -->
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              data-toggle="dropdown"
+              class="nav-link dropdown-toggle user-action"
+              ><%= user.customerName %> <b class="caret"></b
+            ></a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item"
+                ><i class="fa fa-user-o"></i> Profile</a
+              >
+              <a href="/cart/get" class="dropdown-item"
+                ><i class="fa fa-user-o"></i> cart</a
+              >
+              <a href="#" class="dropdown-item"
+                ><i class="fa fa-calendar-o"></i> Calendar</a
+              >
+              <a href="#" class="dropdown-item"
+                ><i class="fa fa-sliders"></i> Settings</a
+              >
+              <a href="#" class="dropdown-item"
+                ><i class="material-icons">&#xE8AC;</i> Logout</a
+              >
+            </div>
+          </div>
+          <%}%>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>
