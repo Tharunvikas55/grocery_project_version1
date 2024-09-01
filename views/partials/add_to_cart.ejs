@@ -1,0 +1,40 @@
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Merienda+One"
+/>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<form action="/customer/addtocart" method="POST">
+  <input
+    class="form-control text-center me-3"
+    type="num"
+    value="1"
+    style="max-width: 3rem"
+    name="quantity"
+  />
+  <br />
+  <button type="submit" class="btn btn-outline-dark flex-shrink-0">
+    Add to cart
+  </button>
+  <input type="hidden" name="productid" value="<%=i._id%>" />
+  <input type="hidden" name="price" value="<%=i.pprice%>" />
+</form>

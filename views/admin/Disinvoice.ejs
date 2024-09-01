@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manage Products</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" ></script>
+<script>
+function del()
+  {
+    alert("Invoice data deleted successfully");
+    //document.getElementById("s").innerHTML="Product deleted successfully";
+  }
+</script>
+<style>
+a
+{
+  text-decoration: none;
+  color:white; 
+  font-family: 'Times New Roman', Times, serif;
+}
+.nav-link
+{
+   font-size:20px;
+}
+body{
+  /* background-color: lightgreen; */
+  font-family: 'Times New Roman', Times, serif;
+}
+</style>
+</head>
+<body>
+  <%- include("../partials/adminnav.ejs") %>
+  <br>
+  <div class="alert-success text-center" id="s"></div>
+<div class="container-fluid text-center">
+<div><h2>Invoice List</h2></div>
+<!-- <div  class="alert alert-success text-center">
+</div> -->
+<table class="table table-bordered">
+  <tr class="table-danger">
+    <th>Invoice no</th>
+    <th>Invoice date</th>
+    <th>Cusname</th>
+    <th>Phno</th>
+    <th>Addess</th>
+    <th>pdname</th>
+    <th>price</th>
+    <th>quantity</th>
+    <th>Total</th>
+    <th>Delete</th>
+    <th>Print</th>
+  </tr>
+  <%for(let i of invoice){%>
+    <tr class="table-danger">
+      <td><%=i.invoiceno %></td>
+      <td><%=i.invoicedate %></td>
+      <td><%=i.fname %></td>
+      <td><%=i.phno %></td>
+      <td><%=i.add %></td>
+      <td ><%=i.product_name[0] %></td>
+            <td><%=i.price[0] %></td>
+            <td><%=i.quantity[0] %></td>
+            <td><%=i.total[0] %></td>
+            <td><button class="btn btn-danger" onclick="del()"><a href="/admin/invoice/<%=i._id %>/delete">Delete</a></button></td>
+            <td><button class="btn btn-danger"><a href="/admin/invoice/<%=i._id %>/print">Print</a></button></td>
+      <%if(Array.isArray(i.product_name) && i.product_name.length > 1){%>
+        <%for(let j = 1; j < i.product_name.length; j++){%>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td ><%=i.product_name[j] %></td>
+            <td><%=i.price[j] %></td>
+            <td><%=i.quantity[j] %></td>
+            <td><%=i.total[j] %></td>
+            <td><button class="btn btn-danger" onclick="del()"><a href="/admin/invoice/<%=i._id %>/delete">Delete</a></button></td>
+            <td><button class="btn btn-danger"><a href="/admin/invoice/<%=i._id %>/print">Print</a></button></td>  
+          </tr>
+        <%}} else{%>
+          <td><%=i.product_name %></td>
+          <td><%=i.price %></td>
+          <td><%=i.quantity %></td>
+          <td><%=i.total %></td>
+          <td><button class="btn btn-danger" onclick="del()"><a href="/admin/invoice/<%=i._id %>/delete">Delete</a></button></td>
+          <td><button class="btn btn-danger"><a href="/admin/invoice/<%=i._id %>/print">Print</a></button></td>  
+        <%}%>
+    </tr>
+  <%}%>
+</table>
+
+</div>
+</body>
+</html>

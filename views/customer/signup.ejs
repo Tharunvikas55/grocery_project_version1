@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../partials/head.ejs") %>
+
+  <body>
+    <div class="register-photo">
+      <div class="form-container">
+        <div class="image-holder"></div>
+
+        <form action="/register" method="post">
+          <h2 class="text-center"><strong>Create</strong> an account.</h2>
+          <%- include ("../partials/messages") %>
+          <!-- cus_name -->
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="customerName"
+              placeholder="Name"
+              pattern="[A-Za-z]{2,}"
+              required
+              title="Please enter at least two characters"
+              value="<%=typeof cus_name !='undefined' ? cus_name:''%>"
+            />
+          </div>
+
+          <!-- customerMobileNumber -->
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="tel"
+              name="customerMobileNumber"
+              placeholder="Mobile no"
+              pattern="[0-9]{10}"
+              required
+            />
+          </div>
+
+          <!-- cus_address -->
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="cus_address"
+              placeholder="Address"
+              required
+              title="Please enter a valid 10 digit mobile number"
+            />
+          </div>
+
+          <!-- password -->
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}"
+              title="Please enter a password with at least 8 characters, including at least one number, one lowercase letter, and one uppercase letter"
+            />
+
+            <span id="message1" style="color: red"> </span>
+          </div>
+
+          <!-- password -->
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="password"
+              name="password2"
+              id="password2"
+              placeholder="Re-type Password"
+            />
+            <span id="message2" style="color: red"> </span>
+          </div>
+          <br />
+          <p>
+            <input
+              type="text"
+              class="form-control"
+              id="datepicker"
+              placeholder="Date-of-birth"
+              name="dob"
+            />
+          </p>
+          <input type="hidden" name="role" value="customer" />
+
+          <div class="form-group">
+            <a href="/register"
+              ><button
+                class="btn btn-primary btn-block"
+                id="submit"
+                type="submit"
+              >
+                Sign Up
+              </button></a
+            >
+            <button class="btn btn-primary btn-block" type="reset">
+              Reset
+            </button>
+            <br />
+            <a href="/login">Already Have account?Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <%- include("../partials/footer.ejs") %>
+  </body>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+  />
+  <style>
+    .register-photo {
+      background: #f1f7fc;
+      padding: 80px 0;
+    }
+
+    .register-photo .image-holder {
+      display: table-cell;
+      width: auto;
+      background: url("https://e0.pxfuel.com/wallpapers/32/600/desktop-wallpaper-supermarket-stock-illustrations-11-754-supermarket-stock-grocery.jpg");
+      background-size: cover;
+    }
+
+    .register-photo .form-container {
+      display: table;
+      max-width: 900px;
+      width: 90%;
+      margin: 0 auto;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-photo form {
+      display: table-cell;
+      width: 400px;
+      background-color: #ffffff;
+      padding: 40px 60px;
+      color: #000a14;
+    }
+
+    @media (max-width: 991px) {
+      .register-photo form {
+        padding: 40px;
+      }
+    }
+
+    .register-photo form h2 {
+      font-size: 24px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .register-photo form .form-control {
+      background: #b1caef;
+      border: none;
+      border-bottom: 1px solid #2c82ec;
+      border-radius: 0;
+      box-shadow: none;
+      outline: none;
+      color: inherit;
+      text-indent: 6px;
+      height: 40px;
+    }
+
+    .register-photo form .form-check {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .register-photo form .btn-primary {
+      background: #f4476b;
+      border: none;
+      border-radius: 4px;
+      padding: 11px;
+      box-shadow: none;
+      margin-top: 35px;
+      text-shadow: none;
+      outline: none !important;
+    }
+
+    .register-photo form .btn-primary:hover,
+    .register-photo form .btn-primary:active {
+      background: #eb3b60;
+    }
+
+    .register-photo form .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .register-photo form .already {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      color: #6f7a85;
+      opacity: 0.9;
+      text-decoration: none;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $("#datepicker").datepicker();
+    });
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+  />
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</html>
