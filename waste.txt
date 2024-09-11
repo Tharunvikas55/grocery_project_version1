@@ -1,0 +1,86 @@
+signup.ejs script
+
+function validateForm() {
+      //collect form data in JavaScript variables
+      var pw1 = document.getElementById("cus_password").value;
+      var pw2 = document.getElementById("cus_repassword").value;
+      var bt = document.getElementById("submit");
+
+      //check empty password field
+      if (pw1 == "") {
+        document.getElementById("message1").innerHTML =
+          "**Fill the password please!";
+        return false;
+      }
+
+      //check empty confirm password field
+      if (pw2 == "") {
+        document.getElementById("message2").innerHTML =
+          "**Enter the password please!";
+        return false;
+      }
+
+      //minimum password length validation
+      if (pw1.length < 8) {
+        document.getElementById("message1").innerHTML =
+          "**Password length must be atleast 8 characters";
+        return false;
+      }
+
+      //maximum length of password validation
+      if (pw1.length > 15) {
+        document.getElementById("message1").innerHTML =
+          "**Password length must not exceed 15 characters";
+        return false;
+      }
+
+      if (pw1 != pw2) {
+        document.getElementById("message2").innerHTML =
+          "**Passwords are not same";
+        bt.disabled = true;
+
+        return false;
+      } else {
+        bt.disabled = false;
+        alert("Your password created successfully");
+      }
+    }
+
+    --------------------------------------------------------------------------------
+    admin_product_add.ejs
+    
+    <!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <!-- <%- include("./partials/nav.ejs") %> -->
+
+    <!-- for add product -->
+    <form action="/admin/new/product" method="POST">
+      <label for="pname">Product Name:</label>
+      <input type="text" name="pname" placeholder="Product Name" /><br />
+      <label for="pprice">Product Price:</label>
+      <input type="text" name="pprice" placeholder="Product Price" /><br />
+      <label for="pimage">image url:</label>
+      <input type="text" name="pimage" /> <br />
+      <label for="pbrand">Brand:</label>
+      <input type="text" name="pbrand" placeholder="Brand" /><br />
+      <label for="pcatogory">Product Catogory: </label>
+      <select name="pcatogory">
+        <option value="masala">Masala</option>
+        <option value="dhal">Dhal</option>
+        <option value="cleaning">cleaning</option></select
+      ><br />
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="quantity" /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html> -->
+
+----------------------------------
+
+
+

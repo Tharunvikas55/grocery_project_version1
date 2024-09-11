@@ -51,7 +51,7 @@ router.get('/add/:productId', async (req, res) => {
   
       await cart.save();
       req.flash('success_msg',"product added!");
-     res.redirect("/cart/get");
+     res.redirect("/index");
       
     } catch (err) {
       console.error(err);
@@ -73,14 +73,8 @@ router.get('/add/:productId', async (req, res) => {
       if (index === -1) {
         return res.status(404).send('Product not found in cart');
       }
-  // Decrement the quantity by 1
-  if (cart.items[index].quantity > 1) {
-    cart.items[index].quantity -= 1;
-  } else {
-    // If quantity is 1, remove the item from the cart
-    cart.items.splice(index, 1);
-  }
-      // cart.items.splice(index, 1);
+  
+      cart.items.splice(index, 1);
   
       await cart.save();
       res.redirect('/cart/get')
@@ -98,12 +92,8 @@ router.get('/add/:productId', async (req, res) => {
       console.log(cart);
   
       if (!cart) {
-        return res.status(404).redirect('/index');
+        return res.status(404).send('Cart not found');
       }
-      // if (cart.items.length === 0) {
-      //   // Render a view indicating that the cart is empty
-      //   return res.render('customer/cart1', { title: 'Cart', user: req.user ,message:'cart is empty'});
-      // }
   
     res.render('customer/cart1',{cart,title:"cart",user:req.user})
     } catch (err) {
@@ -113,26 +103,12 @@ router.get('/add/:productId', async (req, res) => {
   });
 
   router.get('/clear', async (req, res) => {
-    // try {
-    //   const cart = await Cart.findById({ userId: req.user});
-    //   cart.items = []; // Update items array with an empty array
-    //   await cart.save();
-    //   req.flash('success_msg',"cleared!");
-    //  res.redirect("/index");
-    // } catch (err) {
-    //   console.error(err);
-    //   res.status(500).json({ message: 'Something went wrong' });
-    // }
     try {
-      const cart = await Cart.findOne({ userId: req.user }); // Use findOne instead of findById
-      if (!cart) {
-        return res.status(404).send('Cart not found');
-      }
-  
+      const cart = await Cart.findById({ userId: req.user});
       cart.items = []; // Update items array with an empty array
       await cart.save();
-      req.flash('success_msg', 'Cleared!');
-      res.redirect('/index');
+      req.flash('success_msg',"cleared!");
+     res.redirect("/index");
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Something went wrong' });

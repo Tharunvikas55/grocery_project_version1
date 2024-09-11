@@ -14,7 +14,7 @@ exports.postLogin=(req,res)=>{
     // res.redirect("/");
     
     passport.authenticate('local', {
-        successRedirect: '/admin',
+        successRedirect: '/index',
         failureRedirect: '/login',
         failureFlash: true
       }   

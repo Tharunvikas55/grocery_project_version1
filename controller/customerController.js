@@ -41,7 +41,7 @@ exports.signUpPost=(req, res) => {
             customerMobileNumber,
             password,
             password2,
-            cus_address,role,title:"signUp"
+            doornumber,role,title:"signUp"
           });
         }
         else {

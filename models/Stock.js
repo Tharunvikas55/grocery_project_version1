@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 const schema=mongoose.Schema;
 
 const productschema=new schema({
-        pname:{
+    pname:{
         type:String,
         required:true,
     },

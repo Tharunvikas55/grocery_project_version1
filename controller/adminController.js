@@ -10,10 +10,6 @@ exports.getIndexPage=(req,res)=>{
   
   res.render("admin/adminIndex",{title:"Admin"});
 }
-exports.getabout=(req,res)=>{
-  
-  res.render("admin/about",{title:"Admin"});
-}
 
 // stocks start
 exports.getAllProducts=(req,res)=>{       

@@ -13,7 +13,6 @@ const {forwardAuthenticated} = require("../config/auth")
 const router=express.Router();
 
 router.get("/",adminController.getIndexPage);
-router.get('/about',adminController.getabout);
 router.get("/new/product",adminController.addNewProductGet);
 router.get('/products',adminController.getAllProducts);
 router.get("/:id/edit",adminController.productEditGet);
